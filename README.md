@@ -14,8 +14,8 @@ formulas). A band under the month headers labels each column ACTUAL or BUDGET.
 
 | Utilization | Net income | Pro-forma net income |
 |---|---:|---:|
-| 100% | $440,333 | $303,532 |
-| 91% | $392,025 | $255,224 |
+| 100% | $427,064 | $290,263 |
+| 91% | $378,756 | $241,955 |
 
 Jan–Jul actuals imply **90.5%** utilization; the Forecast tab shows that next to the toggle.
 
@@ -32,15 +32,16 @@ label from BUDGET to ACTUAL.
 | **Monthly Capacity** | Real 2026 calendar → working days → billable hours per person per month → revenue. Also drives hourly wage cost. |
 | **Budget P&L** | Pure budget, all 12 months at full capacity. Source of the Aug–Dec figures. |
 | **Forecast 2026** | The budget: Jan–Jul actual, Aug–Dec calculated. Plus a pro-forma restating the year with all costs expensed. |
+| **Owner Earnings** | Steven's salary, K-1 pass-through income and the tax that follows. Every tax parameter is an editable input. |
 
 ## Forecast 2026 (at 100% utilization)
 
 | | Jan–Jul actual | Aug–Dec budget | Total 2026 |
 |---|---:|---:|---:|
 | Revenue | $692,433 | $536,753 | $1,229,186 |
-| COGS | $363,778 | $250,842 | $614,620 |
+| COGS | $363,778 | $264,110 | $627,888 |
 | Operating expenses | $58,644 | $115,589 | $174,233 |
-| **Net income** | **$270,012** | **$170,321** | **$440,333** |
+| **Net income** | **$270,012** | **$157,052** | **$427,064** |
 
 Every Jan–Jul figure ties to the source QuickBooks P&L to the cent.
 
@@ -52,11 +53,11 @@ full year as if every month bore them:
 
 | | |
 |---|---:|
-| Net income per the forecast | $440,333 |
+| Net income per the forecast | $427,064 |
 | Less owner comp, admin salary + burden, PEO, IT for Jan–Jul | ($136,801) |
-| **Pro-forma net income** | **$303,532** |
+| **Pro-forma net income** | **$290,263** |
 
-Use $440,333 for cash and distributions; use $303,532 to judge whether pricing and staffing work.
+Use $427,064 for cash and distributions; use $290,263 to judge whether pricing and staffing work.
 
 > Actuals are **cash basis** per the QuickBooks footer; the budget is accrual. Switch when ready.
 
@@ -68,6 +69,46 @@ Sep 21 · Oct 22 · Nov 20 · Dec 21.
 
 Holidays are removed **once**, here, so the model never deducts them twice. Billable hours =
 (gross working hours − admin hours − PTO for the month) × billable share × utilization.
+
+## Quarterly discretionary bonus
+
+Defined in a block on **Staff P&L** below the main table. Each person has a target % of base
+(5% placeholder); the quarterly amount is target ÷ 4 × that quarter's **payout factor** — the
+discretionary lever, set per quarter. Paid in March, June, September and December. **The owner
+is excluded** (target 0%).
+
+| | Annual | Employer tax | Total cost |
+|---|---:|---:|---:|
+| W-2 employees → payroll lines | $22,718 | $1,719 | $24,437 |
+| Contractor → cost of labor | $2,520 | — | $2,520 |
+| **Total** | **$25,238** | **$1,719** | **$26,957** |
+
+Employer Social Security applies only to bonus dollars still under the wage base after base pay
+(Lisa's $8,800 bonus is taxed on $8,500 of headroom); Medicare applies to all of it; FUTA and
+SUTA are already maxed by base pay. Bonuses and their tax are folded into each person's
+fully-loaded cost, so loaded cost per hour and gross profit already reflect the plan.
+
+On Forecast 2026 only the September and December payments land — March and June sit inside the
+Jan–Jul actuals.
+
+## Owner Earnings
+
+Models Steven as an S-corp owner: W-2 salary carries FICA, the remaining profit reaches his 1040
+through the K-1 free of FICA.
+
+| | |
+|---|---:|
+| Firm profit before owner compensation | $509,884 |
+| Less salary and its employer tax | ($198,767) |
+| **K-1 pass-through income** | **$311,116** |
+| Taxable income (after QBI) | $426,255 |
+| **Total tax** | **$114,134** (23.0%) |
+| **Net after-tax cash to owner** | **$381,482** |
+
+Accounting is a **Specified Service Trade or Business**, so the 20% QBI deduction phases out as
+income rises — at this level it is ~60% available, worth $37,161. Every tax parameter (brackets,
+standard deduction, thresholds, AZ rate) is an editable input; the shipped figures are estimates,
+so verify them before relying on the output.
 
 ## Key modeling choices
 
