@@ -1,24 +1,26 @@
 # Onyx Accounting Group — Firm Budget & Forecast (2026)
 
-`Firm_Budget_Forecast_2026.xlsx` — driver-based budget blended with actuals to date.
-Change any **yellow input cell** and the model re-computes.
+`Firm_Budget_Forecast_2026.xlsx` — driver-based budget model. Change any **yellow input cell**
+and the model re-computes.
 
-## Start here
+## Start here — Forecast 2026
 
-**Forecast 2026** is the headline tab: actual months to date plus budget for the balance of
-the year, in QuickBooks layout. Each month is labelled **ACTUAL** (green) or **BUDGET** (amber).
+The budget for the year. **January–July are the actual figures from the QuickBooks P&L**
+(cash basis, typed in blue). **August–December are calculated from the budget** (green
+formulas). A band under the month headers labels each column ACTUAL or BUDGET.
 
-**To roll forward each month:** paste the new QuickBooks column into **Budget vs Actual**, then
-raise the month counter in `Budget vs Actual!B6` by one. Everything re-blends automatically.
+**Utilization toggle:** `Assumptions!B15`, mirrored on the Forecast tab. It moves the
+**Aug–Dec budget months only** — the Jan–Jul actuals never move.
 
-**Utilization toggle:** `Assumptions!B15`. It moves **budget months only** — actual months are
-historical fact. YTD actuals imply **≈91%**; the Forecast tab shows the live setting and the
-implied figure side by side.
+| Utilization | Net income | Pro-forma net income |
+|---|---:|---:|
+| 100% | $440,333 | $303,532 |
+| 91% | $392,025 | $255,224 |
 
-| Utilization | Forecast net income |
-|---|---:|
-| 100% | $440,333 |
-| 91% | $392,025 |
+Jan–Jul actuals imply **90.5%** utilization; the Forecast tab shows that next to the toggle.
+
+**When a month closes:** type its actual figures over that month's column and change the band
+label from BUDGET to ACTUAL.
 
 ## Tabs
 
@@ -28,24 +30,33 @@ implied figure side by side.
 | **Assumptions** | Hours, PTO, utilization, employer tax rates, owner comp. The flat "hours × 4 weeks" block is legacy and feeds nothing. |
 | **Staff P&L** | Pay + full labor burden (AZ/US employer tax + PEO) → loaded cost per hour and gross profit per person. |
 | **Monthly Capacity** | Real 2026 calendar → working days → billable hours per person per month → revenue. Also drives hourly wage cost. |
-| **Budget P&L** | Pure budget, all 12 months, at full capacity. |
-| **Budget vs Actual** | Where actuals live. YTD variance and the reconciliation of the net income gap. |
-| **Forecast 2026** | Actual + budget blended, plus a pro-forma restating the year with all costs expensed. |
+| **Budget P&L** | Pure budget, all 12 months at full capacity. Source of the Aug–Dec figures. |
+| **Forecast 2026** | The budget: Jan–Jul actual, Aug–Dec calculated. Plus a pro-forma restating the year with all costs expensed. |
 
-## Forecast 2026 (actual Jan–Jul + budget Aug–Dec, 100% utilization)
+## Forecast 2026 (at 100% utilization)
+
+| | Jan–Jul actual | Aug–Dec budget | Total 2026 |
+|---|---:|---:|---:|
+| Revenue | $692,433 | $536,753 | $1,229,186 |
+| COGS | $363,778 | $250,842 | $614,620 |
+| Operating expenses | $58,644 | $115,589 | $174,233 |
+| **Net income** | **$270,012** | **$170,321** | **$440,333** |
+
+Every Jan–Jul figure ties to the source QuickBooks P&L to the cent.
+
+### Why there are two net income numbers
+
+The Jan–Jul actuals carry **no owner compensation, admin salary, PEO benefits or IT** — those
+aren't on the QuickBooks P&L. The Aug–Dec budget months do. The pro-forma block restates the
+full year as if every month bore them:
 
 | | |
 |---|---:|
-| Revenue | $1,229,186 |
-| COGS | $614,620 |
-| Gross profit | $614,566 |
-| Operating expenses | $174,233 |
-| **Net income** | **$440,333** (35.8%) |
+| Net income per the forecast | $440,333 |
+| Less owner comp, admin salary + burden, PEO, IT for Jan–Jul | ($136,801) |
 | **Pro-forma net income** | **$303,532** |
 
-The two net income figures differ because the actual months carry **no owner compensation,
-admin salary, PEO benefits or IT** — those aren't on the QuickBooks P&L. The pro-forma block
-restates the full year as if every month bore them ($136,801 of cost).
+Use $440,333 for cash and distributions; use $303,532 to judge whether pricing and staffing work.
 
 > Actuals are **cash basis** per the QuickBooks footer; the budget is accrual. Switch when ready.
 
@@ -69,4 +80,4 @@ Bill rates — *Clients Billing Rates Master Sheet 2026*. Pay — *Cost Sheet.xl
 holidays — *Onyx Handbook*. Actuals — *Onyx Accounting Group LLC Profit and Loss*, Jan–Jul 2026
 (cash basis).
 
-> Yellow = input · Green = from another tab · Black = formula.
+> Yellow = input · Blue = typed actual · Green = from another tab · Black = formula.
