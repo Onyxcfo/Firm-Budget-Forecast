@@ -104,6 +104,7 @@ through the K-1 free of FICA.
 | Taxable income (after QBI) | $426,255 |
 | **Total tax** | **$114,134** (23.0%) |
 | **Net after-tax cash to owner** | **$381,482** |
+| Distribution to cover tax on the K-1 | $62,786 |
 
 Accounting is a **Specified Service Trade or Business**, so the 20% QBI deduction phases out as
 income rises — at this level it is ~60% available, worth $37,161. Every tax parameter (brackets,
