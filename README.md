@@ -5,8 +5,11 @@ and the model re-computes.
 
 ## What changed in this version
 
-- **Angle replaces Insperity.** The Benefits tab is rebuilt around the Angle Health
-  ANG TRAD 1000/2000 plan. Every column of the quote is an editable input.
+- **Medical rebuilt on the Angle Cost-by-Tier structure** from the CapFi / Questco cost model.
+  All three plans priced by tier, 50%-of-premium funding with Angle's minimum-funding floor,
+  per-person elections.
+- **PEO costs held separate.** Questco's fees are on the tab but excluded from the P&L until a
+  single switch says otherwise.
 - **One more PTO day for US staff** — 88 hours a year, up from 80. Valentina is unchanged.
 - **A $70,014 labour-cost leak is closed.** See below; it is the largest number on this page.
 
@@ -29,40 +32,49 @@ The operating-expense lines now absorb every person's non-COGS share:
 Staff P&L fully-loaded cost now ties to the Budget P&L to the cent ($824,076.53), and the
 calibration check reads **OK — formula reproduces the plan**.
 
-## Benefits — Angle Health ANG TRAD 1000/2000
+## Benefits — Angle Health, funded as a percentage of premium
 
-Onyx pays a fixed dollar amount per tier; the employee pays the balance of the premium.
+Onyx funds **50% of whatever plan each person elects**, never less than Angle's minimum funding
+($219.51/mo, 50% of the cheapest employee-only rate) and never more than the premium. Switch
+`Benefits!C15` to *Fixed dollars* and Onyx pays a flat amount per tier instead, with the employee
+absorbing the whole difference between plans.
 
-| Tier | Premium | Onyx pays | Employee pays | Onyx share | Deductible | OOP max | Worst case to employee |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Employee only | $546.33 | $275.00 | $271.33 | 50.3% | $1,000 | $2,000 | $5,256 |
-| Employee + spouse | $1,147.29 | $600.00 | $547.29 | 52.3% | $2,000 | $4,000 | $10,567 |
-| Family | $1,693.61 | $900.00 | $793.61 | 53.1% | $2,000 | $4,000 | $13,523 |
+All three plans are priced for every tier. What Onyx pays if the whole firm takes one plan:
 
-Employer cost, current census: **$4,573/mo — $54,879/yr** (medical $35,400, 401(k) match at 3%
-$19,479). The Insperity proposal was $8,106/mo — **$42,389 a year cheaper**, and employees pay
-less too ($271 / $547 / $794 against $338 / $676 / $1,014), because the underlying premium is
-lower rather than because Onyx absorbed more of it.
+| Plan | HSA | Deductible (ind/fam) | OOP max (ind/fam) | Onyx $/yr | Employee $/yr | Worst case |
+|---|:--:|---|---|---:|---:|---:|
+| ANG HDHP 3400/5000 | Y | $3,400 / $6,800 | $5,000 / $10,000 | **$24,498** | $24,498 | $59,498 |
+| ANG TRAD 2000/4000 | N | $2,000 / $4,000 | $4,000 / $8,000 | $27,460 | $27,460 | $55,460 |
+| ANG TRAD 1000/2000 | N | $1,000 / $2,000 | $2,000 / $4,000 | $30,485 | $30,485 | $44,485 |
 
-Gone with Insperity: the $183/employee/month HR admin fee, 0.17% workers' comp and EPLI,
-the 0.233% payroll-tax allocation, and the $2,824.61 enrollment fee.
+**Everyone is defaulted to the HDHP 3400/5000**, where the cost model leaves them. Changing a
+person's plan is one cell in block 4.
 
-**Two things to set**: the real effective month (`Benefits!B43` still carries the old Insperity
-date of November) and each person's actual tier — the elections reproduce the census in total
-but guess who holds which.
+Census: Steven and Jessica Family, Lisa employee-only, Christine employee + spouse, Josephine
+waiving, Valentina not on US benefits. Four enrolled.
+
+Employer cost: **$3,665/mo — $43,977/yr** (medical $24,498 + 401(k) match at 3% $19,479).
+Effective **1 October**, so three months land in 2026 — $10,994.
+
+### PEO (Questco) — carried, not costed
+
+Block 8 holds the Questco quote: $117 PEPM admin, workers' comp and EPLI, life and LTD elected,
+cyber and STD declined — **$907/mo, $10,886/yr recurring**, plus $1,000 implementation. It is
+**excluded from the P&L** until `Benefits!B103` is set to Yes. Payroll taxes on the Questco quote
+are a pass-through and are not modelled here; the workbook computes them wage base by wage base.
 
 ## 2026 base case
 
 | | Jan–Jul actual | Aug–Dec budget | Year |
 |---|---:|---:|---:|
 | Revenue | $692,433 | $502,249 | **$1,194,682** |
-| COGS | $363,778 | $233,415 | $597,193 |
-| Gross profit | $328,655 | $268,833 | $597,489 (50.0%) |
-| Operating expenses | $58,644 | $165,347 | $223,991 |
-| **Net income** | **$270,012** | **$103,486** | **$373,498** (31.3%) |
-| **Pro-forma net income** | | | **$211,416** |
+| COGS | $363,778 | $235,083 | $598,861 |
+| Gross profit | $328,655 | $267,166 | $595,821 (49.9%) |
+| Operating expenses | $58,644 | $165,527 | $224,171 |
+| **Net income** | **$270,012** | **$101,639** | **$371,650** (31.1%) |
+| **Pro-forma net income** | | | **$222,318** |
 
-Budget P&L, all twelve months budgeted: **$280,965**.
+Budget P&L, all twelve months budgeted: **$291,867**.
 
 Growth (new clients, new hires) is **switched off** so the base case is real. Turn it on in the
 Growth & Hiring tab.
@@ -122,7 +134,7 @@ NNN quote would add $8–$12/SF. There's an input row for the one-time cost, cur
 | **Bill Rates** | Rate card per client, plus the actual role-weighted rates that drive the model. |
 | **Assumptions** | Hours, PTO, employer tax, owner comp, and the mode switches: rate method (B36), owner hours (B38), bonus source (B40). |
 | **Staff P&L** | Pay, labour burden, loaded cost per hour, gross profit per person. Quarterly bonus block, operational scorecard, Josephine's pay options. |
-| **Benefits** | Angle medical by tier, elections, 401(k) match, plan start, employer cost summary. |
+| **Benefits** | Angle rate card, contribution policy, cost by tier, elections, 401(k), employer cost summary, and the Questco PEO block (excluded). |
 | **Monthly Capacity** | 2026 calendar → billable hours → revenue, per person. Owner residual block and the basis bridge. |
 | **Growth & Hiring** | New clients and hires (off in the base case) plus the live office-space block. |
 | **Budget P&L** | Pure budget, all 12 months. |
@@ -131,9 +143,17 @@ NNN quote would add $8–$12/SF. There's an input row for the one-time cost, cur
 
 ## Open items
 
-- **Angle effective date.** `Benefits!B43` is still November, carried over from the superseded
-  Insperity start. Two months of benefit cost land in 2026 at that setting.
-- **Benefit elections** reproduce the census in total but guess who holds which tier.
+- **Which plan.** Everyone is defaulted to the HDHP 3400/5000. Moving the firm to the
+  TRAD 1000/2000 costs $30,485/yr instead of $24,498 — but cuts the worst case for employees from
+  $59,498 to $44,485. One cell per person.
+- **Two errors in the CapFi / Questco cost model.** Its *Cost by Tier* enrolled count is hard-typed
+  to 1 for the Family rows when two people hold Family, so its plan totals understate Onyx's cost
+  by one family — $8,166 on the HDHP. Its *Elections* tab computes person by person and is right.
+  Separately, its FICA figure exceeds 7.65% of the quoted payroll and does not appear to cap Social
+  Security at the wage base.
+- **Pay figures differ.** The cost model assumes Steven $186,000, Lisa $178,094, Jessica $135,000,
+  Christine $79,228. This budget carries $184,500 / $176,000 / $125,280 / $83,520. Reconcile before
+  either is quoted externally.
 - **Basis mix.** Jan–Jul are cash-basis QuickBooks actuals; Aug–Dec are accrual. The billing analysis shows **$20,110 earned but not invoiced** at 31 August. Converting the actuals to accrual is the last real inconsistency.
 - **August is available.** The billing analysis has August earned revenue of $97,452. Pull the August QuickBooks P&L and move the Forecast cut-over from 7 to 8.
 - **Still unpriced:** VV1012 LLC and Building & Development Professionals bill real time but aren't on the master card. Four clients were dropped from the master — Foothills Reserve among them, which billed 8.4 hours in the window.
@@ -142,6 +162,7 @@ NNN quote would add $8–$12/SF. There's an input row for the one-time cost, cur
 ## Sources
 Rates — *Clients Billing Rates Master Sheet 2026* (Sept) and *Onyx Client Billing Analysis Jun–Aug 2026*.
 Utilization — *Onyx Utilization Model Apr–Aug 2026*. Office — *Office Space Cost Estimate*, Aug 2026.
-Benefits — Angle Health ANG TRAD 1000/2000 quote. Actuals — QuickBooks P&L Jan–Jul 2026 (cash).
+Benefits — *Onyx Angle / Questco Cost Model* and Angle Health quote 400798 via CapFi, underwritten
+30 Jul 2026. Actuals — QuickBooks P&L Jan–Jul 2026 (cash).
 
 > Yellow = input · Blue = typed actual · Green = from another tab · Black = formula.
