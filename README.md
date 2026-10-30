@@ -1,140 +1,106 @@
-# Onyx Accounting Group — Annual Budget 2026
+# Onyx Accounting Group — Budget 2027
 
-`Firm_Budget_Forecast_2026.xlsx` — **four tabs, one live page.**
+`Firm_Budget_Forecast_2026.xlsx` — a four-sheet chain. Each sheet feeds the next.
 
-| Tab | What it is |
-|---|---|
-| **Budget** | The whole model. Annual P&L on the left, every driver on the right, all on one screen. |
-| **Benefits** | Angle rate card, contribution policy, cost by tier, and the Questco PEO quote. |
-| **Bill Rates** | Client rate card — reference only. |
-| **Owner Earnings** | Salary, K-1 and the tax that follows. |
+```
+Bill Rates  →  Staff P&L  →  Monthly Capacity  →  Budget 2027
+```
 
-Deleted: Assumptions, Staff P&L, Monthly Capacity, Growth & Hiring, Budget P&L, Forecast 2026,
-Guide. Ten tabs became four.
-
-## The Budget page
-
-Freeze is set at row 6, so the headline strip stays on screen while you scroll. Change a yellow
-cell in any block on the right and the P&L on the left moves.
-
-| Block | Where | What it drives |
+| Sheet | What it does | Feeds |
 |---|---|---|
-| 1. Annual P&L | A–D | The output. Annual, per month, % of revenue. |
-| 2. Staff, capacity and cost | F–W, rows 7–14 | Pay, utilization, billable hours, revenue, burden, COGS split, gross profit per person. |
-| 3. Capacity, rates and employer tax | F–H, rows 19–39 | Working days, the 35-hour goal, bill rates, payroll tax rates and wage bases. |
-| 4. Benefits by person | M–U, rows 19–33 | Tier, plan, medical, 401(k), PEO — per person. |
-| 5. Utilization check | F–M, rows 43–50 | The provided rates against billable hours a week and % of paid hours. |
-| 6. Discretionary bonus | F–J, rows 56–63 | Target % and payout factor per person. |
+| **Bill Rates** | Client card. Simple and weighted averages by role; a one-cell method selector. | The bill rate per role → Staff P&L column T |
+| **Staff P&L** | Pay, employer tax, benefits (medical tier, PEO, 401k), loaded cost, COGS %, revenue and gross profit by person. Tax rates and the Angle / Questco figures sit in blocks B and C on the same sheet. | Cost, burden and COGS split → Budget 2027 |
+| **Monthly Capacity** | 2027 calendar — weekdays, holidays, working hours by month. PTO. Editable utilization per person with the Apr–Aug 2026 history beside it. Billable hours, revenue and pay by month. | Revenue and pay by month → Budget 2027 |
+| **Budget 2027** | Monthly P&L, QuickBooks layout, twelve months plus total. Operating expenses typed once in the Annual-input column. | — |
+| Owner Earnings | Salary, K-1 and the tax that follows, off the 2027 budget. | — |
+| Assumptions | **Pending deletion.** A one-screen index of where each former item now lives. | — |
 
-## 2026 at the baseline
+Benefits, Growth & Hiring, Guide, Budget P&L and Forecast 2026 are deleted. No forecast.
 
-| | Annual | Per month | % rev |
+## Bill rates — weighted, not simple
+
+The weighted average is the more accurate of the two: each client's card rate is weighted by the
+hours the firm actually puts into that client, so the clients that drive the hours drive the rate.
+The simple average lets a one-hour client count as much as a 218-hour client.
+
+| Role | Simple | **Weighted (used)** | Realised Jun–Aug |
 |---|---:|---:|---:|
-| Revenue | **$1,198,722** | $99,893 | |
-| Cost of goods sold | $605,443 | $50,454 | 50.5% |
-| **Gross profit** | **$593,279** | $49,440 | **49.5%** |
-| Operating expenses | $363,983 | $30,332 | 30.4% |
-| **NET INCOME** | **$229,296** | $19,108 | **19.1%** |
+| CFO | $248.12 | **$249.62** | $248.90 |
+| Controller | $155.42 | **$156.95** | $146.70 |
+| Staff | $96.04 | **$96.32** | $97.17 |
 
-7,651 billable hours a year at a $156.67 blended rate.
+`Bill Rates!C68` picks the method: 1 simple, 2 weighted, 3 realised. The realised Controller
+rate sits $10 under the card — write-downs and clients billed below card, worth knowing.
 
-**Against the file you sent back** ($1,219,372 revenue, $261,832 net income):
+## Staff P&L
 
-| | |
-|---|---:|
-| Revenue, from rebuilding capacity on an annual basis | −$20,650 |
-| PEO cost, now charged per person | −$10,886 |
-| PEO implementation, one-time | −$1,000 |
-| **Net income** | **−$32,536** |
+| Person | Basis | Base comp | Medical | Benefits $/yr | Fully loaded | COGS % | Bill rate | Hrs/yr | Revenue | Gross profit |
+|---|---|---:|---|---:|---:|---:|---:|---:|---:|---:|
+| Steven Nikolov | Salary | $184,500 | FAM | $12,339 | $211,106 | 50% | $249.62 | 821 | $205,038 | $99,485 |
+| Lisa Danforth | Salary | $176,000 | EE | $5,455 | $195,072 | 100% | $249.62 | 1,636 | $408,462 | $213,390 |
+| Jessica Bumphus | Hourly $60 | $125,280 | FAM | $12,339 | $147,356 | 100% | $156.95 | 1,608 | $252,391 | $105,035 |
+| Christine Johnson | Hourly $40 | $83,520 | ES | $9,061 | $101,821 | 100% | $96.32 | 1,615 | $155,590 | $53,769 |
+| Valentina Dikova | Contractor | $50,400 | — | — | $50,400 | 100% | $96.32 | 1,705 | $164,259 | $113,859 |
+| Josephine Mack | Salary | $80,000 | waived | $2,177 | $104,813 | 5% | $96.32 | 271 | $26,150 | $20,909 |
+| **Firm** | | **$699,700** | | **$41,371** | **$810,569** | | $158.25 | **7,658** | **$1,211,890** | **$606,447** |
 
-## PEO cost per person — the gap you spotted
+**Benefits are on this sheet** (block C). Angle ANG TRAD 1000/2000: Onyx pays 50% of the premium,
+never less than Angle's $219.52 minimum — $273.17 employee-only, $573.65 employee + spouse, $846.81
+family. The Questco PEO is $181.44 per W-2 employee a month ($117 admin + the group cover ÷ 5),
+charged to everyone on payroll, medical or not. The 401(k) match is at 0%.
 
-You were right. The PEO was sitting behind a switch that was off, and nothing allocated it to
-people. It is now charged to **every W-2 employee, medical or not**:
+Elections as you set them: Jessica Family, Christine employee + spouse, Lisa employee only.
+**Steven is Family and Josephine is waiving — carried from the Questco census, not confirmed.**
 
-| | Per employee /mo |
-|---|---:|
-| Questco admin fee | $117.00 |
-| Group cover — workers' comp & EPLI, basic life, LTD ÷ 5 | $64.44 |
-| **PEO per W-2 employee** | **$181.44** |
+Employer payroll tax (block B) is computed on base comp plus bonus, wage base by wage base, with
+2026 parameters. Update the Social Security base when SSA publishes 2027.
 
-**Josephine now costs $181.44 a month with no medical at all** — $2,177 a year. Valentina, a
-Bulgaria contractor, is not a worksite employee and carries none of it.
+## Monthly Capacity — 2027
 
-Total benefits: **$41,371/yr** — medical $30,485 + PEO $10,886, plus $1,000 of implementation in
-operating expenses. Cyber and short-term disability are declined; flip them to Yes on the
-Benefits tab if that changes. The 401(k) match is at **0%** where you left it.
+261 weekdays, 7 handbook holidays, **254 working days**, 2,088 paid hours. Billable capacity at the
+35-hour goal is 7 hours per working day — 1,778 hours per full-time person before PTO.
 
-## COGS allocation — confirmed, and you were right
+Utilization is one editable cell per person, with the Apr–Aug 2026 figure beside it:
 
-Your reading of my reasoning was exactly right, and the reasoning was wrong. I was splitting each
-person's cost by their **billable mix** — billable hours ÷ hours worked — so Lisa sat at 83.5%,
-Jessica 91.0%, Christine 81.7%, Valentina 89.3%, and their admin time landed in overhead.
+| Person | Delivery allocation | Historical | Used | Billable hrs/wk | % of paid hours |
+|---|---:|---:|---:|---:|---:|
+| Steven | 50% | 96.6% | 96.6% | 16.2 | 39% |
+| Lisa | 100% | 96.2% | 96.2% | 32.2 | 78% |
+| Jessica | 100% | 94.5% * | 94.5% | 31.7 | 77% |
+| Christine | 100% | 95.0% | 95.0% | 31.8 | 77% |
+| Valentina | 100% | 99.8% | 99.8% | 33.6 | 82% |
+| Josephine | 100% | 16.0% | 16.0% | 5.3 | 13% |
 
-The allocation you provided is the **delivery allocation** column of your own utilization model:
-100% for delivery staff, 50% for Steven, 0% for Josephine. Those are different columns of the
-same sheet and I used the wrong one.
+\* Cindi Campbell's history. Historical rates measure against the 35-hour goal after time off,
+which is why they read high; "% of paid hours" is the everyday meaning of utilization.
 
-The model now runs on your figures — delivery staff at **100%**, Steven at 50%, Josephine at 5%.
-Admin time for delivery staff is a cost of delivery, not overhead. That moves about $56,000 of
-cost from operating expenses into COGS; net income is unchanged by it, gross margin falls.
+PTO is 11 days for US staff and 10 for Valentina, spread in proportion to working days. Hourly pay
+follows paid hours in the month, so March and December cost more than February.
 
-## Utilization — confirmed
+## Budget 2027
 
-The rates are **exactly** column I of the Summary tab of *Onyx Utilization Model Apr–Aug 2026*,
-"Utilization % at capacity" — capped so overtime cannot read above 100%.
+| | 2027 | Per month | % rev |
+|---|---:|---:|---:|
+| Revenue | **$1,211,890** | $100,991 | |
+| Cost of goods sold | $605,443 | $50,454 | 50.0% |
+| **Gross profit** | **$606,447** | $50,537 | **50.0%** |
+| Operating expenses | $362,983 | $30,249 | 30.0% |
+| **Net income** | **$243,464** | $20,289 | **20.1%** |
 
-| Person | Provided rate | Delivery allocation | Used here | Billable hrs/wk | % of paid hours | Actual hrs/mo Apr–Aug |
-|---|---:|---:|---:|---:|---:|---:|
-| Steven Nikolov | 96.6% | 50% | 48.3% | 16.9 | 39% | 85.5 |
-| Lisa Danforth | 96.2% | 100% | 96.2% | 33.7 | 78% | 139.5 |
-| Jessica Bumphus | 94.5% * | 100% | 94.5% | 33.1 | 77% | 134.9 |
-| Christine Johnson | 95.0% | 100% | 95.0% | 33.3 | 77% | 141.5 |
-| Valentina Dikova | 99.8% | 100% | 99.8% | 34.9 | 81% | 131.0 |
-| Josephine Mack | 16.0% | 100% | 16.0% | 5.6 | 13% | 23.7 |
+Revenue runs $95,424 in the 20-working-day months and $109,738 in March. Bonuses pay out in March,
+June, September and December. Rent is $96,000 — the new office at full run-rate, for which 2027 is
+the first full year. Every operating-expense line is a 2026 figure carried forward; type over
+column P.
 
-\* Cindi Campbell's history as the Controller proxy.
+Check row at the bottom of the sheet: labour cost in the budget equals Staff P&L fully-loaded cost
+to the cent ($810,569).
 
-**Why they read high:** they divide billable hours by the **35-hour-a-week goal** after holidays
-and time off — not by paid hours. 96.2% of goal is 33.7 billable hours a week, which is 78% of
-paid time. The "% of paid hours" column is the number most people mean by utilization.
+## Open
 
-Uncapped, the same model reads Steven 115.2%, Lisa 99.6%, Cindi 108.3%, Christine 95.4%,
-Valentina 104.0% — several people billed **above** the goal. The rates are not inflated; the
-denominator is a goal, not a year.
+- **Delete Assumptions?** Everything on it has a new home (listed on the tab). Two items were
+  dropped outright — the owner-hours residual mode and the bonus scorecard switch.
+- **Steven's and Josephine's elections** are carried from the Questco census — confirm.
+- **2027 tax parameters**: Social Security wage base, standard deduction, brackets are 2026 figures.
+- **December holidays**: Christmas falls on a Saturday in 2027. Two days are budgeted; pick which.
 
-Steven's 96.6% is against his 50% delivery allocation, so the model carries 48.3% — 16.9 billable
-hours a week, close to the 85.5 hours a month he actually logged.
-
-**One number worth a look:** Valentina at 99.8% with 11 PTO days gives 1,698 hours a year. She
-actually averaged 131 hours a month across Jun–Aug, which annualises to about 1,572. The model
-runs about 8% hot on her.
-
-## What changed from the driver-based model
-
-- **Annual, not monthly.** One column, at the baseline assumptions. No 12-month calendar, no
-  Jan–Jul actuals blended with an Aug–Dec budget.
-- **Capacity is annual too**: 261 weekdays − 7 holidays − 11 PTO days = 243 working days ×
-  7 billable hours at goal = **1,701 hours of billable capacity** per full-time person.
-- **Growth & Hiring is gone.** It was zeroed anyway, so nothing moved.
-- **Bill rates are direct inputs** — $250 CFO (yours), $146.70 Controller, $97.17 Staff — with
-  the Jun–Aug actuals shown beside them in grey.
-
-Staff fully-loaded cost ties to the P&L to the cent: **$810,569**, split $605,443 into COGS and
-$205,126 into operating expenses.
-
-## Open items
-
-- **Valentina's hours** run about 8% above what she actually billed. Consider 92% or giving her
-  PTO days.
-- **Rent at $96,000** is the full office run-rate for twelve months. The lease starts in October,
-  so a 2026 cash budget would carry three months.
-- **Angle plan choice.** Everyone is on the TRAD 1000/2000 where you left them — $30,485/yr
-  against $24,498 on the HDHP 3400/5000. Block 3 of the Benefits tab prices all three.
-- **401(k) is at zero.** Questco prices safe-harbor basic at about $26,300/yr, 3% non-elective at
-  about $19,750.
-- **Two errors in the CapFi / Questco cost model** are not reproduced here: its Cost by Tier
-  enrolled count is hard-typed to 1 on the Family rows when two people hold Family, and its FICA
-  figure exceeds 7.65% of the quoted payroll without capping Social Security at the wage base.
-
-> Yellow = input · Green = from another tab · Black = formula · Grey = reference only.
+> Yellow = input · Green = from another sheet · Black = formula · Grey = reference only.
